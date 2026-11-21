@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-20 11:38",
- "latest": "2026-11-19",
+ "updated": "2026-11-21 11:20",
+ "latest": "2026-11-20",
  "panels": {
   "M1": {
    "title": "美股长期估值偏离（纳指·10年·实际价格）",
    "group": "估值",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
-   "current": 60.35,
-   "pct": 63.5,
+   "current": 56.66,
+   "pct": 60.3,
    "unit": "%",
    "verdict": null,
    "howto": ">+20% 长期偏贵、<-20% 长期低位；实际价格已剔除通胀，跨年代可比（长历史用纳指代理）。"
@@ -16,10 +16,10 @@
   "M2": {
    "title": "S&P500 偏离五年均线",
    "group": "估值",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
-   "current": 35.42,
-   "pct": 52.3,
+   "current": 32.63,
+   "pct": 45.1,
    "unit": "%",
    "verdict": null,
    "howto": ">+10% 偏贵；<-20% 历史底部区。偏离度越高越贵。"
@@ -38,9 +38,9 @@
   "M1b": {
    "title": "巴菲特指标（股权市值 / GDP）",
    "group": "估值",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
-   "current": 258.7,
+   "current": 253.5,
    "pct": 100.0,
    "unit": "%",
    "verdict": null,
@@ -49,10 +49,10 @@
   "M4": {
    "title": "VIX 恐慌指数",
    "group": "情绪 / 风险",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
-   "current": 24.56,
-   "pct": 81.5,
+   "current": 28.44,
+   "pct": 89.9,
    "unit": "",
    "verdict": null,
    "howto": ">30 市场恐慌；15-20 正常；<15 过度自满，风险积累。"
@@ -60,10 +60,10 @@
   "M5": {
    "title": "信用利差（BAA − 10Y 美债）",
    "group": "情绪 / 风险",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
-   "current": 1.52,
-   "pct": 6.9,
+   "current": 1.56,
+   "pct": 10.4,
    "unit": "%",
    "verdict": null,
    "howto": "利差走阔=信用收缩、避险升温；>4% 多为危机边缘。"
@@ -71,10 +71,10 @@
   "M6": {
    "title": "收益率曲线倒挂（10Y − 2Y）",
    "group": "情绪 / 风险",
-   "asof": "2026-11-19",
+   "asof": "2026-11-20",
    "type": "line",
-   "current": 0.28,
-   "pct": 27.3,
+   "current": 0.29,
+   "pct": 27.9,
    "unit": "%",
    "verdict": null,
    "howto": "转负=曲线倒挂，历次衰退前都出现，领先 6-18 个月。"
@@ -82,9 +82,9 @@
   "M13": {
    "title": "跨资产相关性（风险偏好切换）",
    "group": "情绪 / 风险",
-   "asof": "2026-11-19",
+   "asof": "2026-11-20",
    "type": "line",
-   "current": 0.078,
+   "current": 0.065,
    "pct": null,
    "unit": "",
    "verdict": null,
@@ -93,10 +93,10 @@
   "M14": {
    "title": "VIX 期限结构（VIX / VIX3M）",
    "group": "情绪 / 风险",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
-   "current": 1.011,
-   "pct": 93.9,
+   "current": 1.052,
+   "pct": 97.4,
    "unit": "倍",
    "verdict": null,
    "howto": ">1 短端恐慌(期限倒挂)，常伴急跌；<0.85 过度自满。"
@@ -104,10 +104,10 @@
   "M15": {
    "title": "收益率曲线（10Y − 3M）",
    "group": "情绪 / 风险",
-   "asof": "2026-11-19",
+   "asof": "2026-11-20",
    "type": "line",
-   "current": 0.7,
-   "pct": 33.7,
+   "current": 0.6,
+   "pct": 31.6,
    "unit": "%",
    "verdict": null,
    "howto": "<0 倒挂=衰退预警；Fed 常用 10Y-3M 而非 10Y-2Y。"
@@ -126,7 +126,7 @@
   "M7": {
    "title": "全球股市地图（归一化）",
    "group": "全球 / 世界经济",
-   "asof": "2026-11-19",
+   "asof": "2026-11-20",
    "type": "rebase",
    "current": null,
    "pct": null,
@@ -148,7 +148,7 @@
   "M9": {
    "title": "避险资产温度计（黄金/长债/商品）",
    "group": "全球 / 世界经济",
-   "asof": "2026-11-19",
+   "asof": "2026-11-20",
    "type": "rebase",
    "current": null,
    "pct": null,
@@ -203,9 +203,9 @@
   "M20": {
    "title": "密歇根消费者信心",
    "group": "宏观景气",
-   "asof": "2026-09-01",
+   "asof": "2026-10-01",
    "type": "line",
-   "current": 48.1,
+   "current": 48.0,
    "pct": 0.6,
    "unit": "",
    "verdict": null,
@@ -291,10 +291,10 @@
   "M18": {
    "title": "5年通胀预期（盈亏平衡）",
    "group": "通胀 / 利率",
-   "asof": "2026-11-19",
+   "asof": "2026-11-20",
    "type": "line",
-   "current": 2.22,
-   "pct": 62.9,
+   "current": 2.18,
+   "pct": 60.1,
    "unit": "%",
    "verdict": null,
    "howto": "市场定价的通胀预期，领先 CPI；>2.5% 预期升温。"
@@ -302,7 +302,7 @@
   "M21": {
    "title": "联邦基金利率（有效）",
    "group": "通胀 / 利率",
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "type": "line",
    "current": 3.88,
    "pct": 75.3,
