@@ -1,6 +1,7 @@
 # 美股 / 世界经济温度计 · US & World Economy Dashboard
 
-> **在线看板（点开即用）**：<https://wj624.github.io/us-world-economy-dashboard/>
+> **在线看板（点开即用）**：<https://economy.yygq.me/>（备用 GitHub Pages：<https://jameszzzqaq.github.io/us-world-economy-dashboard/>）
+> **上游原仓库**：Fork 自 [wj624/us-world-economy-dashboard](https://github.com/wj624/us-world-economy-dashboard)，保留全部指标与口径，部署至 `jameszzzqaq` 与 `yygq.me`。
 
 一个覆盖**美股与世界经济**的 28 面板指标看板。**单文件、自包含、离线可看**，手机可「加到主屏幕」当 App。
 每日北京时间 **06:30**（美股收盘后）自动更新。
@@ -20,23 +21,24 @@
 
 | 用途 | 地址 |
 |---|---|
-| **看板主页**（人看） | <https://wj624.github.io/us-world-economy-dashboard/> |
-| **看板中心（聚合入口）** | <https://wj-dashboards.pages.dev/> |
-| **给 AI 的文本摘要**（推荐发这个） | <https://wj624.github.io/us-world-economy-dashboard/llms.txt> |
-| 同一份内容的另一文件名（`llms.txt` 与 `snapshot.md` 内容完全相同，供不同下游使用） | <https://wj624.github.io/us-world-economy-dashboard/snapshot.md> |
-| 精简机器数据 | <https://wj624.github.io/us-world-economy-dashboard/latest.json> |
-| 全量机器数据（全历史） | <https://wj624.github.io/us-world-economy-dashboard/data.json> |
-| 源码仓库 | <https://github.com/wj624/us-world-economy-dashboard> |
+| **看板主页**（Cloudflare Pages） | <https://economy.yygq.me/> |
+| **看板主页**（备用 GitHub Pages） | <https://jameszzzqaq.github.io/us-world-economy-dashboard/> |
+| **同域兄弟看板** | [ETF+LSI](https://etf-lsi.yygq.me/) · [EarlETF](https://earl.yygq.me/) · [轮动监控](https://rotation.yygq.me/) · [国家队ETF](https://etf-flow.yygq.me/) |
+| **给 AI 的文本摘要**（推荐发这个） | <https://economy.yygq.me/llms.txt> |
+| 同一份内容的另一文件名（`llms.txt` 与 `snapshot.md` 内容完全相同，供不同下游使用） | <https://economy.yygq.me/snapshot.md> |
+| 精简机器数据 | <https://economy.yygq.me/latest.json> |
+| 全量机器数据（全历史） | <https://economy.yygq.me/data.json> |
+| 源码仓库（本 Fork） | <https://github.com/jameszzzqaq/us-world-economy-dashboard>（上游：[wj624/us-world-economy-dashboard](https://github.com/wj624/us-world-economy-dashboard)） |
 
 一次性复制全部地址：
 
 ```text
-看板主页        https://wj624.github.io/us-world-economy-dashboard/
-AI 文本摘要     https://wj624.github.io/us-world-economy-dashboard/llms.txt
-摘要 Markdown   https://wj624.github.io/us-world-economy-dashboard/snapshot.md
-精简机器数据    https://wj624.github.io/us-world-economy-dashboard/latest.json
-全量机器数据    https://wj624.github.io/us-world-economy-dashboard/data.json
-源码仓库        https://github.com/wj624/us-world-economy-dashboard
+看板主页        https://economy.yygq.me/
+AI 文本摘要     https://economy.yygq.me/llms.txt
+摘要 Markdown   https://economy.yygq.me/snapshot.md
+精简机器数据    https://economy.yygq.me/latest.json
+全量机器数据    https://economy.yygq.me/data.json
+源码仓库        https://github.com/jameszzzqaq/us-world-economy-dashboard
 ```
 
 > 三个给 AI / 机器读的文件（`llms.txt` / `snapshot.md` / `latest.json`）由 `make_llm_summary.py`
@@ -121,11 +123,14 @@ python make_llm_summary.py           # → llms.txt / snapshot.md / latest.json
 
 离线验证模板渲染：`python make_sample.py && python build.py`（用合成样例数据，不联网）。样例输出到 `sample_data.json`，不会覆盖生产 `data.json`。
 
-## 部署（GitHub Pages）
+## 部署（Cloudflare Pages + GitHub Pages）
 
-1. 仓库 Settings → Pages → Source 选 `main` 分支 `/ (root)`。
-2. Settings → Secrets and variables → Actions 加 `FRED_API_KEY`（**强烈建议**：两条通道都在，不配则走 `fredgraph.csv` 免 key 通道，但该通道在 Actions 云 IP 上常被墙/超时，见数据源说明）。
-3. Actions 里手动跑一次「每日自动更新看板」，即生成真实数据并部署。
+1. Cloudflare Pages 项目名 `us-world-economy-dashboard`（生产分支 `main`），绑定自定义域名 `economy.yygq.me`。
+2. 仓库 Settings → Secrets and variables → Actions 配置：
+   - `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`（用于自动发布至 Cloudflare Pages）
+   - `FRED_API_KEY`（**强烈建议**：两条通道都在，不配则走 `fredgraph.csv` 免 key 通道，但该通道在 Actions 云 IP 上常被墙/超时，见数据源说明）
+3. 可选开启备用 GitHub Pages：Settings → Pages → Source 选 `main` 分支 `/ (root)`。
+4. Actions 里手动跑一次「每日自动更新看板」，即生成真实数据并同步部署。
 
 ## 给 AI 的维护提示词
 
@@ -159,7 +164,7 @@ python make_llm_summary.py           # → llms.txt / snapshot.md / latest.json
 ### 提示词（复制这段给 AI）
 
 ```text
-你在维护 GitHub 仓库 wj624/us-world-economy-dashboard —— 一个美股/世界经济 28 面板指标看板。
+你在维护 GitHub 仓库 jameszzzqaq/us-world-economy-dashboard —— 一个美股/世界经济 28 面板指标看板。
 先读 README.md（「数据源」与「给 AI 的维护提示词」两节）。
 
 【流水线】fetch_data.py → data.json → build.py → 单文件 index.html；
@@ -245,7 +250,7 @@ make_llm_summary.py → llms.txt / snapshot.md / latest.json；GitHub Actions �
 ### D. 给 AI 的维护边界（可复制这段）
 
 ```
-你在维护 wj624/us-world-economy-dashboard（每日自动出 28 面板看板）。动手前：
+你在维护 jameszzzqaq/us-world-economy-dashboard（每日自动出 28 面板看板）。动手前：
 1. 先读 README「给 AI 的维护提示词」三个坑，再读本附录；尤其坑 1 现在是「有缓存短路会静默冻结」。
 2. 绝对不要：删 cache/；让抓取失败写空值或覆盖 null；手改产物；把 make_sample.py 改回写 data.json；
    恢复 monthly-snapshot.yml 的自动 schedule。

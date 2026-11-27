@@ -14,7 +14,7 @@
 import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BASE = "https://wj624.github.io/us-world-economy-dashboard"
+BASE = "https://economy.yygq.me"
 
 
 def reading(p):

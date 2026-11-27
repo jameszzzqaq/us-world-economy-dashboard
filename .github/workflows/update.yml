@@ -24,6 +24,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: 安装 Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+          package-manager-cache: false
+
       - name: 安装依赖
         run: pip install -r requirements.txt
 
@@ -72,3 +78,25 @@ jobs:
             git commit -m "chore: 自动更新 $(TZ=Asia/Shanghai date +%Y-%m-%d\ %H:%M)"
             git push
           fi
+
+      - name: 发布到 Cloudflare Pages
+        if: success()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -e
+          if [ -z "${CLOUDFLARE_API_TOKEN}" ] || [ -z "${CLOUDFLARE_ACCOUNT_ID}" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN 或 CLOUDFLARE_ACCOUNT_ID 未配置，跳过 Cloudflare Pages 发布"
+            exit 0
+          fi
+          rm -rf _cf_pages && mkdir -p _cf_pages
+          for f in index.html data.json latest.json llms.txt snapshot.md version.txt .nojekyll; do
+            [ -f "$f" ] && cp "$f" _cf_pages/
+          done
+          npx --yes wrangler@4 pages deploy _cf_pages \
+            --project-name=us-world-economy-dashboard \
+            --branch=main \
+            --commit-dirty=true
+          rm -rf _cf_pages
+          echo "已同步到 https://economy.yygq.me/"
