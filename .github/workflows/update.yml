@@ -99,4 +99,4 @@ jobs:
             --branch=main \
             --commit-dirty=true
           rm -rf _cf_pages
-          echo "已同步到 https://economy.yygq.me/"
+          echo "已同步到 https://invest.yygq.me/economy/"

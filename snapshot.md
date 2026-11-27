@@ -1,8 +1,8 @@
 # 美股 / 世界经济温度计 —— 数据快照
 
 > 生成时间：2026-11-27 21:27（北京时间）　最新行情日：2026-11-25
-> 在线看板：https://economy.yygq.me/
-> 机器可读全量数据：https://economy.yygq.me/data.json
+> 在线看板：https://invest.yygq.me/economy/
+> 机器可读全量数据：https://invest.yygq.me/economy/data.json
 
 ## 这是什么
 

@@ -1,7 +1,7 @@
 # 美股 / 世界经济温度计 · US & World Economy Dashboard
 
-> **在线看板（点开即用）**：<https://economy.yygq.me/>（备用 GitHub Pages：<https://jameszzzqaq.github.io/us-world-economy-dashboard/>）
-> **上游原仓库**：Fork 自 [wj624/us-world-economy-dashboard](https://github.com/wj624/us-world-economy-dashboard)，保留全部指标与口径，部署至 `jameszzzqaq` 与 `yygq.me`。
+> **在线看板（点开即用）**：<https://invest.yygq.me/economy/>（看板聚合中心：<https://invest.yygq.me/>；备用 GitHub Pages：<https://jameszzzqaq.github.io/us-world-economy-dashboard/>）
+> **上游原仓库**：Fork 自 [wj624/us-world-economy-dashboard](https://github.com/wj624/us-world-economy-dashboard)，保留全部指标与口径，部署至 `jameszzzqaq` 与 `invest.yygq.me`。
 
 一个覆盖**美股与世界经济**的 28 面板指标看板。**单文件、自包含、离线可看**，手机可「加到主屏幕」当 App。
 每日北京时间 **06:30**（美股收盘后）自动更新。
@@ -21,23 +21,25 @@
 
 | 用途 | 地址 |
 |---|---|
-| **看板主页**（Cloudflare Pages） | <https://economy.yygq.me/> |
+| **看板主页**（统一域名） | <https://invest.yygq.me/economy/> |
+| **看板中心（聚合入口）** | <https://invest.yygq.me/> |
 | **看板主页**（备用 GitHub Pages） | <https://jameszzzqaq.github.io/us-world-economy-dashboard/> |
-| **同域兄弟看板** | [ETF+LSI](https://etf-lsi.yygq.me/) · [EarlETF](https://earl.yygq.me/) · [轮动监控](https://rotation.yygq.me/) · [国家队ETF](https://etf-flow.yygq.me/) |
-| **给 AI 的文本摘要**（推荐发这个） | <https://economy.yygq.me/llms.txt> |
-| 同一份内容的另一文件名（`llms.txt` 与 `snapshot.md` 内容完全相同，供不同下游使用） | <https://economy.yygq.me/snapshot.md> |
-| 精简机器数据 | <https://economy.yygq.me/latest.json> |
-| 全量机器数据（全历史） | <https://economy.yygq.me/data.json> |
+| **同域兄弟看板** | [ETF+LSI](https://invest.yygq.me/etf-lsi/) · [EarlETF](https://invest.yygq.me/earl/) · [轮动监控](https://invest.yygq.me/rotation/) · [国家队ETF](https://invest.yygq.me/etf-flow/) |
+| **给 AI 的文本摘要**（推荐发这个） | <https://invest.yygq.me/economy/llms.txt> |
+| 同一份内容的另一文件名（`llms.txt` 与 `snapshot.md` 内容完全相同，供不同下游使用） | <https://invest.yygq.me/economy/snapshot.md> |
+| 精简机器数据 | <https://invest.yygq.me/economy/latest.json> |
+| 全量机器数据（全历史） | <https://invest.yygq.me/economy/data.json> |
 | 源码仓库（本 Fork） | <https://github.com/jameszzzqaq/us-world-economy-dashboard>（上游：[wj624/us-world-economy-dashboard](https://github.com/wj624/us-world-economy-dashboard)） |
 
 一次性复制全部地址：
 
 ```text
-看板主页        https://economy.yygq.me/
-AI 文本摘要     https://economy.yygq.me/llms.txt
-摘要 Markdown   https://economy.yygq.me/snapshot.md
-精简机器数据    https://economy.yygq.me/latest.json
-全量机器数据    https://economy.yygq.me/data.json
+看板中心        https://invest.yygq.me/
+看板主页        https://invest.yygq.me/economy/
+AI 文本摘要     https://invest.yygq.me/economy/llms.txt
+摘要 Markdown   https://invest.yygq.me/economy/snapshot.md
+精简机器数据    https://invest.yygq.me/economy/latest.json
+全量机器数据    https://invest.yygq.me/economy/data.json
 源码仓库        https://github.com/jameszzzqaq/us-world-economy-dashboard
 ```
 
@@ -125,7 +127,7 @@ python make_llm_summary.py           # → llms.txt / snapshot.md / latest.json
 
 ## 部署（Cloudflare Pages + GitHub Pages）
 
-1. Cloudflare Pages 项目名 `us-world-economy-dashboard`（生产分支 `main`），绑定自定义域名 `economy.yygq.me`。
+1. Cloudflare Pages 项目名 `us-world-economy-dashboard`（生产分支 `main`），通过统一入口 `invest-hub` 挂载至 `https://invest.yygq.me/economy/`。
 2. 仓库 Settings → Secrets and variables → Actions 配置：
    - `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`（用于自动发布至 Cloudflare Pages）
    - `FRED_API_KEY`（**强烈建议**：两条通道都在，不配则走 `fredgraph.csv` 免 key 通道，但该通道在 Actions 云 IP 上常被墙/超时，见数据源说明）
